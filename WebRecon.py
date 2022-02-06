@@ -213,7 +213,7 @@ def printBanner():
     \|__|\|__|\|_______|\|_______|\|_______|\|__| \|__|"""
 	print(G + banner + W + '\n')
 	print(G + '[>]' + C + ' Created By : ' + W + 'Cirno9-dev')
-	print(G + '[>]' + C + ' Github     : ' + W + 'https://github.com/Cirno9-dev')
+	print(G + '[>]' + C + ' Github     : ' + W + 'https://github.com/Cirno9-dev/WebRecon')
 	print(G + '[>]' + C + ' Version    : ' + W + version + '\n')
 
     
