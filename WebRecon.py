@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from operator import index
 import os
 import sys
 import pip
@@ -52,9 +51,8 @@ print(G + '[+]' + C + ' Required packages installed!' + W)
 moduleDir =  os.listdir("./modules")
 moduleList = [module.split(".")[0] for module in moduleDir]
 # remove not used modules(tools)
-moduleList.remove('__init__')
-moduleList.remove('__pycache__')
-moduleList.remove('Example')
+for fileName in ignoreFiles:
+    moduleList.remove(fileName.split(".")[0])
 moduleName = ""
 module = None
 
@@ -134,6 +132,7 @@ def show(args):
 	print(G + '[>]' + C + ' Module description : ' + W + module.description)
 	print(G + '[>]' + C + ' Module options : ' + W)
 	for option in module.options:
+		# check the option is required or not
 		request = R+"required"+W if module.options[option]['required'] else G+"optional"+W
 		value = request if module.options[option]['value'] == "" else module.options[option]['value']
 		description = module.options[option]['description']
@@ -180,17 +179,17 @@ def checkOption():
 # run module(tool)
 def run(args):
 	global module
+	# check the required options are set or not
 	if checkOption():
 		module.run()
 		if module.output['status'] == "success":
 			print(G + '[+]' + C + ' Module ' + W + moduleName + C + ' executed successfully!' + W)
+			# if save option is True then save the output
 			if module.output['save']:
 				save(module.output['data'])
 			print("")
 		else:
 			print(R + '[-]' + C + ' Module ' + W + moduleName + C + ' execution failed!' + W)
-			if module.output['show']:
-				print(R + '[-]' + C + ' Error : ' + W + str(module.output['data']))
 			print("")
 	else:
 		print(R + '[-]' + C + ' Module ' + W + moduleName + C + ' failed!' + W)

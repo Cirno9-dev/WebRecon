@@ -23,6 +23,9 @@ WebRecon now offers the following features:
   * A, AAAA, ANY, CNAME, MX, NS, SOA, TXT Records
   * DMARC Records
 
+* Port Scanning
+  * TCP, UDP
+
 ## Installation
 
 ```bash

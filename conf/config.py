@@ -10,10 +10,14 @@ Y = '\033[33m' # yellow
 C = '\033[36m' # cyan
 W = '\033[0m'  # white
 
+# ignore files or forlders in module folder
+ignoreFiles = ['__pycache__', '__init__.py', 'Example.py']
+
+# thread num
+threadNum = 10
+
 # the next variables don't use now
 # proxy Ip
 proxyIP = ''
 # proxy port
 proxyPort = ''
-# thead num
-theadNum = 10
