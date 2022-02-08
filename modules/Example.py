@@ -29,12 +29,12 @@ class Tool:
         }
         # output of the tool
         # status: success or fail
-        # show: True if the output must be printed
-        # data: output data
+        # data: output data, recommended to use dict
+        # save: True if you want to save the output to a file
         self.output = {
             "status": "",
-            "show": True,
-            "data": ""
+            "data": "",
+            "save": True
         }
     
     # run the tool

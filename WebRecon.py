@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from operator import index
 import os
 import sys
 import pip
 import pip._internal
 import importlib
 import readline
+import datetime
+import json
 
 # get config
 from conf.config import *
@@ -181,8 +184,8 @@ def run(args):
 		module.run()
 		if module.output['status'] == "success":
 			print(G + '[+]' + C + ' Module ' + W + moduleName + C + ' executed successfully!' + W)
-			if module.output['show']:
-				print(G + '[>]' + C + ' Output : ' + W + str(module.output['data']))
+			if module.output['save']:
+				save(module.output['data'])
 			print("")
 		else:
 			print(R + '[-]' + C + ' Module ' + W + moduleName + C + ' execution failed!' + W)
@@ -192,6 +195,29 @@ def run(args):
 	else:
 		print(R + '[-]' + C + ' Module ' + W + moduleName + C + ' failed!' + W)
 		print("")
+
+# save module(tool) output
+def save(data):
+	global moduleName
+	# check folder existance
+	if not os.path.exists("output"):
+		os.makedirs("output")
+	# check module folder existance
+	if not os.path.exists("output/"+moduleName):
+		os.makedirs("output/"+moduleName)
+	# get date and time as the file name
+	date = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+	savePath = "output/"+moduleName+"/"+date+".txt"
+	# if data is a dict then save it as json
+	if isinstance(data, dict):
+		with open(savePath, "w") as f:
+			json.dump(data, f, indent=4)
+	# if data is not dict then save it as text
+	else:
+		with open(savePath, "w") as f:
+			f.write(str(data))
+	print("\n" + G + '[+]' + C + ' Saved to ' + W + savePath)
+
     
 # print banner
 def printBanner():

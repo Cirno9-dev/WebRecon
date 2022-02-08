@@ -26,8 +26,8 @@ class Tool:
         }
         self.output = {
             "status": "",
-            "show": False,
-            "data": ""
+            "data": "",
+            "save": True
         }
     
     def run(self):
