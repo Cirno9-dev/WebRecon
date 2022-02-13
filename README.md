@@ -4,6 +4,10 @@ WebRecon is an automatic web reconnaissance tool written in python3. Provides a 
 
 ## Featured
 
+### MyBlog
+
+* https://blog-ljx.site/articles/2022/02/13/1644724437230.html
+
 ### FianlRecon
 * https://github.com/thewhiteh4t/FinalRecon
 

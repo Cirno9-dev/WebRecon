@@ -241,6 +241,7 @@ def printBanner():
 	print(G + banner + W + '\n')
 	print(G + '[>]' + C + ' Created By : ' + W + 'Cirno9-dev')
 	print(G + '[>]' + C + ' Github     : ' + W + 'https://github.com/Cirno9-dev/WebRecon')
+	print(G + '[>]' + C + ' Blog       : ' + W + 'https://blog-ljx.site')
 	print(G + '[>]' + C + ' Version    : ' + W + version + '\n')
 
     
