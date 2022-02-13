@@ -15,9 +15,3 @@ ignoreFiles = ['__pycache__', '__init__.py', 'Example.py']
 
 # thread num
 threadNum = 10
-
-# the next variables don't use now
-# proxy Ip
-proxyIP = ''
-# proxy port
-proxyPort = ''

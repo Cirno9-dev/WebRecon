@@ -6,7 +6,6 @@ import sys
 import pip
 import pip._internal
 import importlib
-import readline
 import datetime
 import json
 
@@ -52,7 +51,8 @@ moduleDir =  os.listdir("./modules")
 moduleList = [module.split(".")[0] for module in moduleDir]
 # remove not used modules(tools)
 for fileName in ignoreFiles:
-    moduleList.remove(fileName.split(".")[0])
+    if fileName.split(".")[0] in moduleList:
+    	moduleList.remove(fileName.split(".")[0])
 moduleName = ""
 module = None
 
@@ -77,6 +77,7 @@ commands = {
 level = 1
 
 # tab completion
+import readline
 lastCommand = ""
 def complete(text, state):
 	global level, lastCommand
@@ -167,6 +168,7 @@ def checkOption():
 	global module
 	faile = False
 	for option in module.options:
+		# check the option is required or not and the value is set or not
 		if module.options[option]['required'] and module.options[option]['value'] == "":
 			print(R + '[-]' + C + ' Option ' + W + option + W + C + ' is required!' + W)
 			faile = True
