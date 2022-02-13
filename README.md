@@ -26,6 +26,8 @@ WebRecon now offers the following features:
 * Port Scanning
   * TCP, UDP
 
+* SSL Information
+
 ## Installation
 
 ```bash
