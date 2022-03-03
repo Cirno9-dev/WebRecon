@@ -5,7 +5,7 @@ import os
 import sys
 import pip
 import pip._internal
-import importlib
+from importlib import util, import_module
 import datetime
 import json
 
@@ -39,7 +39,7 @@ def install(package_name):
 # install nessessary modules
 print(G + '[+]' + C + ' Installing required packages...' + W)
 for pkg in pkgList:
-    spec = importlib.util.find_spec(pkg)
+    spec = util.find_spec(pkg)
     if spec is None:
         print(R + '[-]' + C + ' Package {} not found!'.format(pkg) + W)
         install(pkg)
@@ -118,7 +118,7 @@ def use(args):
 	moduleName = args[0]
 	if moduleName in moduleList:
 		level = 2
-		module = importlib.import_module("modules."+moduleName).Tool()
+		module = import_module("modules."+moduleName).Tool()
 		print(G + '[+]' + C + ' Using module : ' + W + moduleName)
 		print(G + '[>]' + C + ' Type ' + G + 'help' + C + ' to get help' + W)
 		print("")
